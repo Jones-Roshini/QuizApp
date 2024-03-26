@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import axios for making HTTP requests
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Register() {
   const [name, setName] = useState('');
@@ -27,42 +32,31 @@ function Register() {
   };
 
   return (
-    <center>
-    <div>
-      <form onSubmit={handleChange}>
-        <label>
-          Enter Username:
-          <input
-            type="text"
-            value={name}
-            placeholder='Enter your name'
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label><br></br><br></br><br></br>
-        <label>
-          Enter Email:
-          <input
-            type="text"
-            value={email}
-            placeholder='Enter your email'
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label><br></br><br></br><br></br>
-        <label>
-          Enter password:
-          <input
-            type="password"
-            value={password}
-            placeholder='Enter your password'
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label><br></br><br></br><br></br>
-        <button type="submit">Submit</button>
-      </form>
-      <label>Already a user?</label>
-      <Link to="/login">Login</Link>
-    </div>
-    </center>
+ 
+    <Container>
+      <h4>Registration</h4>
+      <Form onSubmit={handleChange} className="mt-3">
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Username</Form.Label>
+        <Form.Control type="text"  value={name} placeholder="Enter username" onChange={(e) => setName(e.target.value) }/>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email</Form.Label>
+        <Form.Control type="text"  value={email} placeholder="Enter email" onChange={(e) => setEmail(e.target.value) }/>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password"  value={password} placeholder="Enter password" onChange={(e) => setPassword(e.target.value) }/>
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+      </Form>
+      <div className='mt-3'>Already a user?  
+      <Link to="/login">Login</Link></div>
+      
+    </Container>
+
   );
 }
 
