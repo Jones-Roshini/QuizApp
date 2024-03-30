@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
 
 function Login() {
     const [name, setName] = useState('');
@@ -34,19 +36,22 @@ function Login() {
     };
 
     return (
-        <center>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Enter Username:
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                </label><br></br><br></br><br></br>
-                <label>
-                    Enter password:
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                </label><br></br><br></br><br></br>
-                <Button as="input" type="submit" value="Submit" />
-            </form>
-            </center>
+        <Container>
+             <h4>Login</h4>
+            <Form onSubmit={handleSubmit} className="mt-3">
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Username</Form.Label>
+        <Form.Control type="text"  value={name} placeholder="Enter username" onChange={(e) => setName(e.target.value) }/>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password"  value={password} placeholder="Enter password" onChange={(e) => setPassword(e.target.value) }/>
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+            </Form>
+            </Container>
     );
 }
 
